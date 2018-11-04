@@ -135,31 +135,24 @@ export default class Zinsber extends React.Component {
                      ausgabeindicator: true,
                   })                      
                } else if (this.state.einzahlung !== "") {       
-                  this.setState({
-                     ausgabetext: 'monatliche Einzahlung noch nicht unterstützt',
-                     ausgabecolor: '#f00',
-                     ausgabeindicator: true,
-                  })
-                  /*switch (this.state.intervallzeit) {
+                  switch (this.state.intervallzeit) {
                      case ("monate"): {
-                        zeim = zei;
-                        zei = Math.floor(zei / 12);
+                        this.setState({
+                           ausgabetext: 'monatliche Einzahlung noch nicht unterstützt',
+                           ausgabecolor: '#f00',
+                           ausgabeindicator: true,
+                        })
                      }
                      break;
                      case ("jahre"): {
-                        zei = zei;
+                        this.setState({
+                           ausgabetext: 'monatliche Einzahlung und jährlicher Intervall noch nicht unterstützt',
+                           ausgabecolor: '#f00',
+                           ausgabeindicator: true,
+                        })
                      }
                      break;
                   }
-                  for (let t = 0; t < zeim; t++) {
-                     if (this.state.schussig == "vor") {
-                        end = end + ein;
-                     }
-                     end = end * zin;
-                     if (this.state.schussig == "nach") {
-                        end = end + ein;
-                     }
-                  }*/
                }
             }
             break;
