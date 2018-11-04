@@ -187,7 +187,7 @@ export default class Bewegungsmesser extends React.Component {
                   </Body>
                 </Header>
             <View style={[styles.inputContainer, {maxHeight: 350}]}>
-                <Text style={styles.inputText}>Legen Sie Ihr Smartphone auf eine gerade Unterlage. Starten Sie die Messung und bewgen Sie das Gerät zügig zur Zielposition. Stoppen Sie die Messung. Um genauere Ergebnisse zu erzielen, können Sie die Messung 2 mal durchführen.</Text>
+                <Text style={styles.inputText}>Legen Sie Ihr Smartphone auf eine gerade Unterlage. Starten Sie die Messung und bewgen Sie das Gerät zügig zur Zielposition. Stoppen Sie die Messung. Führen sie diese Messung erneut in entgegengesetzte Richtung durch, um Ungenauigkeiten zu vermeiden. Sie können auch weitere Messungen durchführen.</Text>
             </View>
                 <View style={styles.outputContainer}>
                     <Button onPress={this.Start} title={this.state.buttontitle}></Button>
@@ -198,9 +198,6 @@ export default class Bewegungsmesser extends React.Component {
                         <Text style={styles.outputText}>Aktuelle Messung: {this.state.ausgabe} m</Text>
                         <Text style={styles.outputText}>Durchschnitt: {this.state.ausgabe2} m</Text>
                     </View>
-                    {this.state.isAverage ? <View style={[styles.notification, styles.outputContainer, {backgroundColor: '#FE4141'}]}>
-                        <Text style={styles.outputText}>Sie können maximal 2 Messungen durchführen! Drücken Sie 'RESET'.</Text>
-                    </View> : null}
                     <View style={styles.outputContainer}>
                         <Button onPress={this.Loschen} title="Reset"/>
                     </View>
