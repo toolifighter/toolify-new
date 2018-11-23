@@ -22,14 +22,6 @@ const styles = StyleSheet.create({
       maxHeight: 300,
       minHeight: 300,
     },
-    calContainer: {
-      maxHeight: 450,
-      minHeight: 450,
-    },
-    // zinsContainer: {
-    //   maxHeight: 450,
-    //   minHeight: 450,
-    // },
     notification: {
       marginTop: 5,
       marginBottom: 5,
