@@ -146,7 +146,7 @@ export default class Zinsber extends React.Component {
                      break;
                      case ("jahre"): {
                         this.setState({
-                           ausgabetext: 'monatliche Einzahlung und jährlicher Intervall noch nicht unterstützt',
+                           ausgabetext: 'monatliche Einzahlung noch nicht unterstützt',
                            ausgabecolor: '#f00',
                            ausgabeindicator: true,
                         })
@@ -163,26 +163,41 @@ export default class Zinsber extends React.Component {
                      ausgabecolor: '#f00',
                      ausgabeindicator: true,
                   })       
-               } else if (this.state.intervallzeit == "monate") {
-                   console.log("hi")
-                  this.setState({
-                     ausgabetext: 'monatlicher Intervall mit Einzahlung noch nicht unterstützt',
-                     ausgabecolor: '#f00',
-                     ausgabeindicator: true,
-                  })
-               } else if (this.state.einzahlung !== "") {  
-                  for (let t = 0; t < zei; t++) {
-                     if (this.state.schussig == "vor") {
-                        end = end + ein;
+               } switch (this.state.intervallzeit) {
+                  case ("monate"): {
+                     for (let t = 0; t < (Math.floor(zei/12)); t++) {
+                        if (this.state.schussig == "vor") {
+                           end = end + ein;
+                        }
+                        end = end * (zin+1);
+                        if (this.state.schussig == "nach") {
+                           end = end + ein;
+                        }
                      }
-                     end = end * (zin+1);
-                     if (this.state.schussig == "nach") {
-                        end = end + ein;
-                     }
+                     for (let t = zei; t >= 12; t = t - 12) {
+                        zei = zei -12;
+                     }                             
+                     end += (end * zin * zei) / 12; 
+                     this.setState({
+                        ergebnisindicator: true,
+                     })   
                   }
-                  this.setState({
-                  ergebnisindicator: true,
-                  })           
+                  break;
+                  case ("jahre"): {
+                     for (let t = 0; t < zei; t++) {
+                        if (this.state.schussig == "vor") {
+                           end = end + ein;
+                        }
+                        end = end * (zin+1);
+                        if (this.state.schussig == "nach") {
+                           end = end + ein;
+                        }
+                     }
+                     this.setState({
+                        ergebnisindicator: true,
+                     })   
+                  }
+                  break;  
                }
             }
             break; 
