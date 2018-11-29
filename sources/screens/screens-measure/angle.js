@@ -30,10 +30,11 @@ export default class Winkelmesser extends React.Component {
             <View style={styles.container}>
             <Header style={styles.header}>
                   <Left style={styles.headerContents}>
-                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}/>
+                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
+                          style={styles.icon}/>
                   </Left>
                   <Body style={styles.headerContents}>
-                    <Text style={styles.headertext}>Winkelmesser</Text>
+                    <Text style={styles.headerText}>Messen</Text>
                   </Body>
                 </Header>
             <View style={[styles.inputContainer, {maxHeight: 350}]}>
