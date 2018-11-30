@@ -208,11 +208,12 @@ export default class Bewegungsmesser extends React.Component {
         <ScrollView>
             <View style={styles.container}>
             <Header style={styles.header}>
-                  <Left style={styles.headerContents}>
-                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}/>
+            <Left style={styles.headerContents}>
+                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
+                          style={styles.icon}/>
                   </Left>
                   <Body style={styles.headerContents}>
-                    <Text style={styles.headertext}>Distanzmessung</Text>
+                    <Text style={styles.headerText}>Messen</Text>
                   </Body>
                 </Header>
             <View style={[styles.inputContainer, {maxHeight: 350}]}>
