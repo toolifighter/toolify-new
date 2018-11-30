@@ -23,7 +23,7 @@ const CustomAppDrawer = (props) => (
 		<ScrollView>
 			<DrawerItems {...props} />
 		</ScrollView>
-	</SafeAreaView>)
+	</SafeAreaView>);
 
 const AppDrawerNavigator = createDrawerNavigator({
 	'Körper ': {

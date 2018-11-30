@@ -1,9 +1,10 @@
 import {createBottomTabNavigator} from 'react-navigation';
+import { MaterialIcons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
+import React from 'react';
 import BMI from './bmi-screen'
 import Calories from './calories-screen';
-import { MaterialIcons, MaterialCommunityIcons  } from '@expo/vector-icons';
-import React from 'react';
 import BodyFat from './bodyfat-screen';
+import Promille from './promille';
 
 const BodyBottomTabNavigator = createBottomTabNavigator ({
   Kalorien: {
@@ -22,7 +23,7 @@ const BodyBottomTabNavigator = createBottomTabNavigator ({
       },
     },
   },
-  Körperfettant: {
+  Körperfettanteil: {
     screen: BodyFat,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => {
@@ -30,6 +31,14 @@ const BodyBottomTabNavigator = createBottomTabNavigator ({
       },
     },
   },
-})
+  Promille: {
+      screen: Promille,
+	  navigationOptions: {
+		  tabBarIcon: ({tintColor}) => {
+			  return <Entypo name="drink" size={26} color={tintColor}/>
+		  },
+	  },
+  },
+});
 
 export default BodyBottomTabNavigator;

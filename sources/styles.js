@@ -71,5 +71,27 @@ const styles = StyleSheet.create({
 	icon:              {
 		color: "#fff",
 	},
+	floatingActionButton: {
+		height: 50,
+		width: 50,
+		margin: 20,
+		borderRadius: 30,
+		backgroundColor: '#005BFF',
+		justifyContent: 'center',
+		alignItems: 'center',
+		elevation: 5,
+		shadowColor: '#fff',
+		shadowOffset: {
+			width: 10,
+			height: 10,
+		},
+		shadowRadius: 5,
+		shadowOpacity: 1.0,
+	},
+	buttonContainer: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+	}
 });
 export default styles;
