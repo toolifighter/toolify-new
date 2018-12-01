@@ -19,14 +19,9 @@ export default class Bewegungsmesser extends React.Component {
    measurementData = []
    calculationdurchschnitt = []
    ergebnisdurchschnitt = []
-
+   timebreaker = 0
    timer = 0
    calculationtime = 0
-
-   constructor(props) {
-      super(props);
-      Accelerometer.setUpdateInterval(1);
-   }
 
    Loschen = () => {
       console.log("Reset")
@@ -46,6 +41,7 @@ export default class Bewegungsmesser extends React.Component {
          this.ergebnisdurchschnitt = []
          this.timer = 0
          this.calculationtime = 0
+         this.timebreaker = 0
       }
    }
 
@@ -59,6 +55,7 @@ export default class Bewegungsmesser extends React.Component {
    
    Start = () => {
       console.log("Start")
+      this.timebreaker = Date.now();
       this.setState({
          buttontitle: "Stop",
          fehler: false,
@@ -70,6 +67,7 @@ export default class Bewegungsmesser extends React.Component {
       let noschleife = 0;
       let tolleranz = 11;
       let resetcount = tolleranz + 1;
+      this.measurementData = [];
       this.durchschnittler = [];
       let timer = Date.now();
       Accelerometer.setUpdateInterval(1);
@@ -78,7 +76,6 @@ export default class Bewegungsmesser extends React.Component {
             x: accelerometerData.x * 9.81,
             y: accelerometerData.y * 9.81,
          })
-
          if (this.measurementData[zahler].x > -1 && this.measurementData[zahler].x < 1) {
             this.measurementData[zahler].x = 0
          }
@@ -129,50 +126,56 @@ export default class Bewegungsmesser extends React.Component {
 
    Stop = () => {
       Accelerometer.removeAllListeners()
-      this.setState({
-         buttontitle: "Start"
-      })
-      let data1 = [];
-      let data2 = [];
-      let durchschnittsumme = 0;
-      let ergebnis = 0;
-      let ergebnisdurchschnittsumme = 0;
-      let durchschnitt = 0;
-      for (let g = 0; g < this.measurementData.length; g++) {
-         if (g % 2 == 0) {
-            data1.push(this.measurementData[g]);
-         } else {
-            data2.push(this.measurementData[g]);
-         }
-      }
-      console.log(data1);
-      this.calculation(data1);
-      this.calculation(data2);
-      console.log(this.calculationdurchschnitt);
-      if (this.state.fehler == false) {
-         for (let g = 0; g < this.calculationdurchschnitt.length; g++) {
-            durchschnittsumme += this.calculationdurchschnitt[g];
-         }
-         ergebnis = durchschnittsumme / this.calculationdurchschnitt.length;
-         this.calculationdurchschnitt = [];
-         console.log(ergebnis);
-         this.ergebnisdurchschnitt.push(ergebnis);
-         for (let g = 0; g < this.ergebnisdurchschnitt.length; g++) {
-            ergebnisdurchschnittsumme += this.ergebnisdurchschnitt[g];
-         }
-         durchschnitt = ergebnisdurchschnittsumme / this.ergebnisdurchschnitt.length;
-         console.log(this.ergebnisdurchschnitt);
+      if (Date.now() - this.timebreaker > 500) {
          this.setState({
-            ergebnisindicator: true,
-            ausgabeergebnis: Math.round(ergebnis * 100) / 100,
-            ausgabedurchschnitt: Math.round(durchschnitt * 100) / 100,
-            ausgabedurchschnittcount: "(" + this.ergebnisdurchschnitt.length + ")",
+            buttontitle: "Start"
          })
-         console.log("geupdated: 1")
+         let data1 = [];
+         let data2 = [];
+         let durchschnittsumme = 0;
+         let ergebnis = 0;
+         let ergebnisdurchschnittsumme = 0;
+         let durchschnitt = 0;
+         for (let g = 0; g < this.measurementData.length; g++) {
+            if (g % 2 == 0) {
+               data1.push(this.measurementData[g]);
+            } else {
+               data2.push(this.measurementData[g]);
+            }
+         }
+         console.log(data1);
+         this.calculation(data1);
+         this.calculation(data2);
+         console.log(this.calculationdurchschnitt);
+         if (this.state.fehler == false) {
+            for (let g = 0; g < this.calculationdurchschnitt.length; g++) {
+               durchschnittsumme += this.calculationdurchschnitt[g];
+            }
+            ergebnis = durchschnittsumme / this.calculationdurchschnitt.length;
+            this.calculationdurchschnitt = [];
+            console.log(ergebnis);
+            this.ergebnisdurchschnitt.push(ergebnis);
+            for (let g = 0; g < this.ergebnisdurchschnitt.length; g++) {
+               ergebnisdurchschnittsumme += this.ergebnisdurchschnitt[g];
+            }
+            durchschnitt = ergebnisdurchschnittsumme / this.ergebnisdurchschnitt.length;
+            console.log(this.ergebnisdurchschnitt);
+            this.setState({
+               ergebnisindicator: true,
+               ausgabeergebnis: Math.round(ergebnis * 100) / 100,
+               ausgabedurchschnitt: Math.round(durchschnitt * 100) / 100,
+               ausgabedurchschnittcount: "(" + this.ergebnisdurchschnitt.length + ")",
+            })
+            console.log("geupdated: 1")
+         }
+         console.log("ende")
+         this.measurementData = [];
+         this.setState({loading: false})
+      } else {
+         console.log("Restart")
+         this.Start();
+         this.measurementData = [];
       }
-      console.log("ende")
-      this.measurementData = [];
-      this.setState({loading: false})
    }
 
    calculation = (data) => {

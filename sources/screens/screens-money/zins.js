@@ -5,8 +5,6 @@ import {
 import styles from '../../styles';
 import {Header, Left, Right, Body, Title, Container, Icon} from 'native-base';
 
-//tipp in zeile 164 ;)
-
 export default class Zinsber extends React.Component {
 	state = {
 		startkapital: '',
@@ -163,11 +161,10 @@ export default class Zinsber extends React.Component {
 						for (let t = 0; t < zei; t++) {
 							if (this.state.schussig == "vor") {
 								end += ein;
-								//besserer operator: 'end += ...' anstatt 'end = end + ...'
 							}
 							end = end * (zin + 1);
 							if (this.state.schussig == "nach") {
-								end = end + ein;
+								end += ein;
 							}
 						}
 						this.setState({
