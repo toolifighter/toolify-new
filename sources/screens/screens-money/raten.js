@@ -148,33 +148,34 @@ export default class Ratenber extends React.Component {
 
    render() {
       return (
-        <ScrollView>
-            <View style={styles.container}>
-               <Header style={styles.header}>
-                  <Left style={styles.headerContents}>
-                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}/>
-                  </Left>
-                  <Body style={styles.headerContents}>
-                    <Text style={styles.headertext}>Ratenrechner</Text>
-                  </Body>
-               </Header>
+         <View style={styles.container}>
+            <Header style={styles.header}>
+            <Left style={styles.headerContents}>
+						<Icon name="menu" onPress={() => this.props.navigation.openDrawer()}
+							style={styles.icon}/>
+					</Left>
+               <Body style={styles.headerContents}>
+				      <Text style={styles.headerText}>Ratenrechner</Text>
+					</Body>
+            </Header>
+            <ScrollView>
                <View style={[styles.inputContainer, styles.calContainer]}>
-               <Text style={styles.inputText}>Grundpreis:</Text>
-               <TextInput onChangeText={this.eingabeGrundpreis} value={this.state.grundpreis} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
-               <Text style={styles.inputText}>Einzahlung:</Text>
-               <Picker
-                  selectedValue={this.state.intervallzeit}
-                  style={[styles.inputPicker]}
-                  onValueChange={(itemValue,) => this.setState({intervallzeit: itemValue})}>
-                  <Picker.Item label="Auswählen" value="keine" style={styles.inputText}/>
-                  <Picker.Item label="pro Monat" value="monate" style={styles.inputText}/>
-                  <Picker.Item label="pro Jahr" value="jahre" style={styles.inputText}/>
-               </Picker>
-               <TextInput onChangeText={this.eingabeEinzahung} value={this.state.einzahlung} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
-               <Text style={styles.inputText}>Laufzeit:</Text>
-               <TextInput onChangeText={this.eingabeZeit} value={this.state.zeit} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
-               <Text style={styles.inputText}>Originalpreis:</Text>
-               <TextInput onChangeText={this.eingabeOriginalpreis} value={this.state.originalpreis} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+                  <Text style={styles.inputText}>Grundpreis:</Text>
+                  <TextInput onChangeText={this.eingabeGrundpreis} value={this.state.grundpreis} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+                  <Text style={styles.inputText}>Einzahlung:</Text>
+                  <Picker
+                     selectedValue={this.state.intervallzeit}
+                     style={[styles.inputPicker]}
+                     onValueChange={(itemValue,) => this.setState({intervallzeit: itemValue})}>
+                     <Picker.Item label="Auswählen" value="keine" style={styles.inputText}/>
+                     <Picker.Item label="pro Monat" value="monate" style={styles.inputText}/>
+                     <Picker.Item label="pro Jahr" value="jahre" style={styles.inputText}/>
+                  </Picker>
+                  <TextInput onChangeText={this.eingabeEinzahung} value={this.state.einzahlung} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+                  <Text style={styles.inputText}>Laufzeit:</Text>
+                  <TextInput onChangeText={this.eingabeZeit} value={this.state.zeit} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+                  <Text style={styles.inputText}>Originalpreis:</Text>
+                  <TextInput onChangeText={this.eingabeOriginalpreis} value={this.state.originalpreis} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
                </View>
                <View style={styles.outputContainer}>
                   <Button onPress={this.calculate} title="Ratenpreis berechnen"></Button>
@@ -189,8 +190,8 @@ export default class Ratenber extends React.Component {
                <View style={styles.outputContainer}>
                   <Button onPress={this.Löschen} title="Reset"/>
                </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+         </View>
       )
    }
 }

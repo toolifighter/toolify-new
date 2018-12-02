@@ -208,20 +208,20 @@ export default class Bewegungsmesser extends React.Component {
 
    render() {
       return (
-        <ScrollView>
-            <View style={styles.container}>
+         <View style={styles.container}>
             <Header style={styles.header}>
-            <Left style={styles.headerContents}>
-                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
-                          style={styles.icon}/>
-                  </Left>
-                  <Body style={styles.headerContents}>
-                    <Text style={styles.headerText}>Messen</Text>
-                  </Body>
-                </Header>
-            <View style={[styles.inputContainer, {maxHeight: 350}]}>
-               <Text style={styles.inputText}>Legen Sie Ihr Smartphone auf eine gerade Unterlage. Starten Sie die Messung und bewgen Sie das Gerät zügig zur Zielposition. Stoppen Sie die Messung. Führen sie diese Messung erneut in entgegengesetzte Richtung durch, um Ungenauigkeiten zu vermeiden. Sie können auch weitere Messungen durchführen.</Text>
-            </View>
+               <Left style={styles.headerContents}>
+                  <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
+                     style={styles.icon}/>
+               </Left>
+               <Body style={styles.headerContents}>
+                  <Text style={styles.headerText}>Distanzmesser</Text>
+               </Body>
+            </Header>
+            <ScrollView>
+               <View style={[styles.inputContainer, {maxHeight: 350}]}>
+                  <Text style={styles.inputText}>Legen Sie Ihr Smartphone auf eine gerade Unterlage. Starten Sie die Messung und bewgen Sie das Gerät zügig zur Zielposition. Führen sie diese Messung erneut in entgegengesetzte Richtung durch, um Ungenauigkeiten zu vermeiden.</Text>
+               </View>
                <View style={styles.outputContainer}>
                   <Button onPress={this.toggle} title={this.state.buttontitle}></Button>
                </View>           
@@ -238,8 +238,8 @@ export default class Bewegungsmesser extends React.Component {
                      <Button onPress={this.Loschen} title="Reset"/>
                   </View>
                </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+         </View>
       )
    }
 }

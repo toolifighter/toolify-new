@@ -132,105 +132,107 @@ export default class Velocity extends React.Component {
 	}
 
 	render() {
-		return <ScrollView>
+		return (
 			<View style={styles.container}>
 				<Header style={styles.header}>
 					<Left style={styles.headerContents}>
 						<Icon name="menu" onPress={() => this.props.navigation.openDrawer()}
-							  style={styles.icon}/>
+							style={styles.icon}/>
 					</Left>
 					<Body style={styles.headerContents}>
-					<Text style={styles.headerText}>Umrechner</Text>
+						<Text style={styles.headerText}>Umrechner</Text>
 					</Body>
 				</Header>
-				<View style={[styles.inputContainer, styles.zinsContainer]}>
-					<Text style={styles.inputText}>Physikalische Größe:</Text>
-					<Picker selectedValue={this.state.unitStart} style={[styles.inputPicker]} onValueChange={this.unitStart}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="Geschwindigkeit" value="v" style={styles.inputText}/>
-						<Picker.Item label="Strecke" value="s" style={styles.inputText}/>
-						<Picker.Item label="Masse" value="m" style={styles.inputText}/>
-					</Picker>
-					{this.state.activeingabe ? <Text style={styles.inputText}>EInheit:</Text> : null}
-					{this.state.activgeschwindigkeit ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="c" value="c" style={styles.inputText}/>
-						<Picker.Item label="m/s" value="m/s" style={styles.inputText}/>
-						<Picker.Item label="km/h" value="km/h" style={styles.inputText}/>
-						<Picker.Item label="Knoten" value="kn" style={styles.inputText}/>
-						<Picker.Item label="mph" value="mph" style={styles.inputText}/>						
-					</Picker> : null : null}
-					{this.state.activstrecke ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="Lichtjahr" value="Lj" style={styles.inputText}/>
-						<Picker.Item label="Astr. Einheit" value="AE" style={styles.inputText}/>
-						<Picker.Item label="Meile" value="mi" style={styles.inputText}/>
-						<Picker.Item label="Zoll" value="inch" style={styles.inputText}/>
-						<Picker.Item label="km" value="km" style={styles.inputText}/>
-						<Picker.Item label="m" value="m" style={styles.inputText}/>
-						<Picker.Item label="dm" value="dm" style={styles.inputText}/>
-						<Picker.Item label="cm" value="cm" style={styles.inputText}/>
-						<Picker.Item label="mm" value="mm" style={styles.inputText}/>
-					</Picker> : null : null}
-					{this.state.activmasse ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="kg" value="kg" style={styles.inputText}/>
-						<Picker.Item label="g" value="g" style={styles.inputText}/>
-						<Picker.Item label="t" value="t" style={styles.inputText}/>
-						<Picker.Item label="Zentner" value="ztr" style={styles.inputText}/>
-						<Picker.Item label="ounze" value="oz" style={styles.inputText}/>
-						<Picker.Item label="Pfund" value="lb" style={styles.inputText}/>
-						<Picker.Item label="Erdmasse" value="EM" style={styles.inputText}/>
-						<Picker.Item label="Sonnenmasse" value="SM" style={styles.inputText}/>
-						<Picker.Item label="Atommasse" value="AM" style={styles.inputText}/>
-					</Picker> : null : null}
-					{this.state.activegrose ? <Text style={styles.inputText}>Größe:</Text> : null}
-					{this.state.activegrose ? <TextInput onChangeText={this.Grose}
-						value={this.state.eingabeamount} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"/> : null}
-					{this.state.activeumrechnen ? <Text style={styles.inputText}>Umrechnen in:</Text> : null}
-					{this.state.activgeschwindigkeit ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="c" value="c" style={styles.inputText}/>
-						<Picker.Item label="m/s" value="m/s" style={styles.inputText}/>
-						<Picker.Item label="km/h" value="km/h" style={styles.inputText}/>
-						<Picker.Item label="Knoten" value="kn" style={styles.inputText}/>
-						<Picker.Item label="mph" value="mph" style={styles.inputText}/>						
-					</Picker> : null : null}
-					{this.state.activstrecke ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="Lichtjahr" value="Lj" style={styles.inputText}/>
-						<Picker.Item label="Astr. Einheit" value="AE" style={styles.inputText}/>
-						<Picker.Item label="Meile" value="mi" style={styles.inputText}/>
-						<Picker.Item label="Zoll" value="inch" style={styles.inputText}/>
-						<Picker.Item label="km" value="km" style={styles.inputText}/>
-						<Picker.Item label="m" value="m" style={styles.inputText}/>
-						<Picker.Item label="dm" value="dm" style={styles.inputText}/>
-						<Picker.Item label="cm" value="cm" style={styles.inputText}/>
-						<Picker.Item label="mm" value="mm" style={styles.inputText}/>
-					</Picker> : null : null}
-					{this.state.activmasse ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
-						<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
-						<Picker.Item label="kg" value="kg" style={styles.inputText}/>
-						<Picker.Item label="g" value="g" style={styles.inputText}/>
-						<Picker.Item label="t" value="t" style={styles.inputText}/>
-						<Picker.Item label="Zentner" value="ztr" style={styles.inputText}/>
-						<Picker.Item label="ounze" value="oz" style={styles.inputText}/>
-						<Picker.Item label="Pfund" value="lb" style={styles.inputText}/>
-						<Picker.Item label="Erdmasse" value="EM" style={styles.inputText}/>
-						<Picker.Item label="Sonnenmasse" value="SM" style={styles.inputText}/>
-						<Picker.Item label="Atommasse" value="AM" style={styles.inputText}/>
-					</Picker> : null : null}
-				</View>
-				<View style={styles.outputContainer}>
-					{this.state.ausgabe ?
-						<View style={[styles.outputContainer, {backgroundColor: '#CCC'}, styles.notification]}>
-							<Text style={styles.outputText}>{this.state.ergebnis}</Text>
-						</View> : null}
-					<View style={styles.outputContainer}>
-						<Button onPress={this.Loschen} title="Reset"/>
+				<ScrollView>
+					<View style={[styles.inputContainer, styles.zinsContainer]}>
+						<Text style={styles.inputText}>Physikalische Größe:</Text>
+						<Picker selectedValue={this.state.unitStart} style={[styles.inputPicker]} onValueChange={this.unitStart}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="Geschwindigkeit" value="v" style={styles.inputText}/>
+							<Picker.Item label="Strecke" value="s" style={styles.inputText}/>
+							<Picker.Item label="Masse" value="m" style={styles.inputText}/>
+						</Picker>
+						{this.state.activeingabe ? <Text style={styles.inputText}>EInheit:</Text> : null}
+						{this.state.activgeschwindigkeit ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="c" value="c" style={styles.inputText}/>
+							<Picker.Item label="m/s" value="m/s" style={styles.inputText}/>
+							<Picker.Item label="km/h" value="km/h" style={styles.inputText}/>
+							<Picker.Item label="Knoten" value="kn" style={styles.inputText}/>
+							<Picker.Item label="mph" value="mph" style={styles.inputText}/>						
+						</Picker> : null : null}
+						{this.state.activstrecke ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="Lichtjahr" value="Lj" style={styles.inputText}/>
+							<Picker.Item label="Astr. Einheit" value="AE" style={styles.inputText}/>
+							<Picker.Item label="Meile" value="mi" style={styles.inputText}/>
+							<Picker.Item label="Zoll" value="inch" style={styles.inputText}/>
+							<Picker.Item label="km" value="km" style={styles.inputText}/>
+							<Picker.Item label="m" value="m" style={styles.inputText}/>
+							<Picker.Item label="dm" value="dm" style={styles.inputText}/>
+							<Picker.Item label="cm" value="cm" style={styles.inputText}/>
+							<Picker.Item label="mm" value="mm" style={styles.inputText}/>
+						</Picker> : null : null}
+						{this.state.activmasse ? this.state.activeingabe ? <Picker selectedValue={this.state.eingabeeinheit} style={[styles.inputPicker]} onValueChange={this.Eingabe}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="kg" value="kg" style={styles.inputText}/>
+							<Picker.Item label="g" value="g" style={styles.inputText}/>
+							<Picker.Item label="t" value="t" style={styles.inputText}/>
+							<Picker.Item label="Zentner" value="ztr" style={styles.inputText}/>
+							<Picker.Item label="ounze" value="oz" style={styles.inputText}/>
+							<Picker.Item label="Pfund" value="lb" style={styles.inputText}/>
+							<Picker.Item label="Erdmasse" value="EM" style={styles.inputText}/>
+							<Picker.Item label="Sonnenmasse" value="SM" style={styles.inputText}/>
+							<Picker.Item label="Atommasse" value="AM" style={styles.inputText}/>
+						</Picker> : null : null}
+						{this.state.activegrose ? <Text style={styles.inputText}>Größe:</Text> : null}
+						{this.state.activegrose ? <TextInput onChangeText={this.Grose}
+							value={this.state.eingabeamount} style={styles.inputText} placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"/> : null}
+						{this.state.activeumrechnen ? <Text style={styles.inputText}>Umrechnen in:</Text> : null}
+						{this.state.activgeschwindigkeit ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="c" value="c" style={styles.inputText}/>
+							<Picker.Item label="m/s" value="m/s" style={styles.inputText}/>
+							<Picker.Item label="km/h" value="km/h" style={styles.inputText}/>
+							<Picker.Item label="Knoten" value="kn" style={styles.inputText}/>
+							<Picker.Item label="mph" value="mph" style={styles.inputText}/>						
+						</Picker> : null : null}
+						{this.state.activstrecke ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="Lichtjahr" value="Lj" style={styles.inputText}/>
+							<Picker.Item label="Astr. Einheit" value="AE" style={styles.inputText}/>
+							<Picker.Item label="Meile" value="mi" style={styles.inputText}/>
+							<Picker.Item label="Zoll" value="inch" style={styles.inputText}/>
+							<Picker.Item label="km" value="km" style={styles.inputText}/>
+							<Picker.Item label="m" value="m" style={styles.inputText}/>
+							<Picker.Item label="dm" value="dm" style={styles.inputText}/>
+							<Picker.Item label="cm" value="cm" style={styles.inputText}/>
+							<Picker.Item label="mm" value="mm" style={styles.inputText}/>
+						</Picker> : null : null}
+						{this.state.activmasse ? this.state.activeumrechnen ? <Picker selectedValue={this.state.eingabeumrechnen} style={[styles.inputPicker]} onValueChange={this.Umrechner}>
+							<Picker.Item label="Auswählen" value="null" style={styles.inputText}/>
+							<Picker.Item label="kg" value="kg" style={styles.inputText}/>
+							<Picker.Item label="g" value="g" style={styles.inputText}/>
+							<Picker.Item label="t" value="t" style={styles.inputText}/>
+							<Picker.Item label="Zentner" value="ztr" style={styles.inputText}/>
+							<Picker.Item label="ounze" value="oz" style={styles.inputText}/>
+							<Picker.Item label="Pfund" value="lb" style={styles.inputText}/>
+							<Picker.Item label="Erdmasse" value="EM" style={styles.inputText}/>
+							<Picker.Item label="Sonnenmasse" value="SM" style={styles.inputText}/>
+							<Picker.Item label="Atommasse" value="AM" style={styles.inputText}/>
+						</Picker> : null : null}
 					</View>
-				</View>
+					<View style={styles.outputContainer}>
+						{this.state.ausgabe ?
+							<View style={[styles.outputContainer, {backgroundColor: '#CCC'}, styles.notification]}>
+								<Text style={styles.outputText}>{this.state.ergebnis}</Text>
+							</View> : null}
+						<View style={styles.outputContainer}>
+							<Button onPress={this.Loschen} title="Reset"/>
+						</View>
+					</View>
+				</ScrollView>
 			</View>
-		</ScrollView>
+		)
 	}
 }

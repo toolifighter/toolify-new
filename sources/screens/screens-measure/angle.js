@@ -115,20 +115,20 @@ export default class Winkelmesser extends React.Component {
 
    render() {
       return (
-        <ScrollView>
-            <View style={styles.container}>
-               <Header style={styles.header}>
-                  <Left style={styles.headerContents}>
-                    <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
-                          style={styles.icon}/>
-                  </Left>
-                  <Body style={styles.headerContents}>
-                    <Text style={styles.headerText}>Messen</Text>
-                  </Body>
-               </Header>
-            <View style={[styles.inputContainer, {maxHeight: 350}]}>
-               <Text style={styles.inputText}>Legen Sie Ihr Handy auff eine gerade Unterlage und bewegen Sie es zügig in eine Richtung um die eigene Achse. Sie können die Messung beliebig oft wiederholen.</Text>
-            </View>
+        <View style={styles.container}>
+            <Header style={styles.header}>
+               <Left style={styles.headerContents}>
+                 <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
+                     style={styles.icon}/>
+               </Left>
+               <Body style={styles.headerContents}>
+                  <Text style={styles.headerText}>Winkelmesser</Text>
+               </Body>
+            </Header>
+            <ScrollView>
+               <View style={[styles.inputContainer, {maxHeight: 350}]}>
+                  <Text style={styles.inputText}>Legen Sie Ihr Handy auff eine gerade Unterlage und bewegen Sie es zügig in eine Richtung um die eigene Achse. Sie können die Messung beliebig oft wiederholen.</Text>
+               </View>
                <View style={styles.outputContainer}>
                   <Button onPress={this.toggle} title={this.state.buttontitle}></Button>
                </View>           
@@ -139,14 +139,14 @@ export default class Winkelmesser extends React.Component {
                      <Text style={styles.outputText}>Durchschnitt({this.durchschnittler.length}): {this.state.ausgabe2}°</Text>
                   </View>
                   {this.fehler.indicator ? <View style={[styles.outputContainer, {backgroundColor: '#f00'}, styles.notification]}>
-                    <Text style={styles.outputText}>{this.fehler.text}</Text>
-                </View> : null}
+                     <Text style={styles.outputText}>{this.fehler.text}</Text>
+                  </View> : null}
                   <View style={styles.outputContainer}>
                      <Button onPress={this.Loschen} title="Reset"/>
                   </View>
                </View>
-            </View>
-         </ScrollView>
+            </ScrollView>
+         </View>
       )
    }
 }

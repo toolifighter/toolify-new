@@ -133,19 +133,19 @@ export default class BMI extends React.Component {
 
    render() {
       return (
-         <ScrollView>          
-            <View>
-               <Header style={styles.header}>
-                  <Left style={styles.headerContents}>
-                     <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
-                        style={styles.icon}/>
-                  </Left>
-                  <Body style={styles.headerContents}>
-                     <Text style={styles.headerText}>Messen</Text>
-                  </Body>
-               </Header>              
+         <View>
+            <Header style={styles.header}>
+               <Left style={styles.headerContents}>
+                  <Icon name="menu" onPress={()=>this.props.navigation.openDrawer()}
+                     style={styles.icon}/>
+               </Left>
+               <Body style={styles.headerContents}>
+                  <Text style={styles.headerText}>Höhenmesser</Text>
+               </Body>
+            </Header>
+            <ScrollView>          
                <View style={[styles.inputContainer, {maxHeight: 350}]}>
-                  <Text style={styles.inputText}>Halten Sie Ihr Smartphone mit dem Display nach oben. Drücken Sie den Start-Button und lassen Sie es fallen. Drücken Sie dann den Stopp-Button.</Text>
+                  <Text style={styles.inputText}>Halten Sie Ihr Smartphone mit dem Display nach oben. Drücken Sie den Start-Button und lassen Sie es fallen.</Text>
                </View>
                <View  style={styles.outputContainer}>
                   <Button onPress={this.toggle} title={this.state.buttontitle} style={styles.button}></Button>
@@ -163,8 +163,8 @@ export default class BMI extends React.Component {
                      <Button onPress={this.Loschen} title="Reset"/>
                   </View>
                </View>
-            </View>
-         </ScrollView>            
+            </ScrollView>
+         </View>            
       );
    }
 }
