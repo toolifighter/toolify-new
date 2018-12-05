@@ -1,5 +1,3 @@
-// Zinsrechner dazu gepsckt
-
 import React from 'react';
 import {Image, SafeAreaView, ScrollView, View} from 'react-native';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation';
@@ -8,6 +6,7 @@ import MeasureNav from './sources/screens/screens-measure/measure-index';
 import MoneyNav from './sources/screens/screens-money/money-index';
 import {Entypo, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-icons';
 import UnitsNav from "./sources/screens/screens-units/units-index";
+import RandomNav from "./sources/screens/screens-random/random-index";
 
 export default class App extends React.Component {
 	render() {
@@ -32,7 +31,7 @@ const AppDrawerNavigator = createDrawerNavigator({
 				return <MaterialIcons name="accessibility" size={22} color={tintColor}/>
 			}
 		}
-	}, "Einheiten    ": {
+	}, "Einheiten ": {
 		screen: UnitsNav, navigationOptions: {
 			drawerIcon: ({tintColor}) => {
 				return <MaterialIcons name="compare-arrows" size={22} color={tintColor}/>
@@ -48,6 +47,12 @@ const AppDrawerNavigator = createDrawerNavigator({
 		screen: MoneyNav, navigationOptions: {
 			drawerIcon: ({tintColor}) => {
 				return <MaterialIcons name="attach-money" size={22} color={tintColor}/>
+			},
+		}
+	},  'Random ': {
+		screen: RandomNav, navigationOptions: {
+			drawerIcon: ({tintColor}) => {
+				return <Entypo name="ruler" size={22} color={tintColor}/>
 			},
 		}
 	},

@@ -127,7 +127,7 @@ export default class Winkelmesser extends React.Component {
             </Header>
             <ScrollView>
                <View style={[styles.inputContainer, {maxHeight: 350}]}>
-                  <Text style={styles.inputText}>Legen Sie Ihr Handy auff eine gerade Unterlage und bewegen Sie es zügig in eine Richtung um die eigene Achse. Sie können die Messung beliebig oft wiederholen.</Text>
+                  <Text style={styles.inputText}>Legen Sie Ihr Handy auf eine gerade Unterlage und bewegen Sie es zügig in eine Richtung um die eigene Achse. Sie können die Messung beliebig oft wiederholen.</Text>
                </View>
                <View style={styles.outputContainer}>
                   <Button onPress={this.toggle} title={this.state.buttontitle}></Button>

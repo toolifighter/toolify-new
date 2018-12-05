@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-	Platform, StatusBar, StyleSheet, View, Text, ActivityIndicator, Button, TextInput, Picker, ScrollView
-} from 'react-native';
+import {Platform, StatusBar, StyleSheet, View, Text, ActivityIndicator, Button, TextInput, Picker, ScrollView} from 'react-native';
 import styles from '../../styles';
 import {Header, Left, Right, Body, Title, Container, Icon} from 'native-base';
 
