@@ -19,6 +19,10 @@ export default class Unit extends React.Component {
 	eingabeamount = null
 	eingabeumrechnen = "null"
 	eingabemultiplyer = null
+	umrechnermultiplyer = 0
+eingabeindicator =  false
+	groseindicator = false
+	umrechnerindicator = false
 
 	Loschen = () => {
 		this.setState({
@@ -47,8 +51,9 @@ export default class Unit extends React.Component {
 
 	Eingabe = (x) => {
 		this.eingabeeinheit = x
+		this.eingabeindicator = true
 		switch (x) {
-			case ("null"): {this.eingabemultiplyer = x}break;
+			case ("null"): {this.eingabeindicator = false}break;
 
 			case ("c"): {this.eingabemultiplyer = 1 / 299792458}break;
 			case ("m/s"): {this.eingabemultiplyer = 1}break;
@@ -76,63 +81,67 @@ export default class Unit extends React.Component {
 			case ("SM"): {this.eingabemultiplyer = 1 / (1.9891 * Math.pow(10,30))}break;
 			case ("AM"): {this.eingabemultiplyer = 6.02214 * Math.pow(10,26)}break;
 		}
-		this.Umrechner(this.eingabeumrechnen);
+		this.Berechnung();
 	}
 
 	Grose = (x) => {
 		this.eingabeamount = x
-		this.Umrechner(this.eingabeumrechnen);
+		if (x == "" || x == null) {
+			this.groseindicator = false
+		} else {
+			this.groseindicator = true
+		}
+		this.Berechnung();
 	}
 
 	Umrechner = (x) => {
-		let ergebnis = 0;
-		let umrechnermultiplyer = 0;
 		this.eingabeumrechnen = x
+		this.umrechnerindicator = true
 		switch (x) {
-			case ("null"): {}break;
+			case ("null"): {this.umrechnerindicator = false}break;
 
-			case ("m/s"): {umrechnermultiplyer = 1} break;
-			case ("c"): {umrechnermultiplyer = 1 / 299792458} break;
-			case ("km/h"): {umrechnermultiplyer = 3.6} break;
-			case ("kn"): {umrechnermultiplyer = 1.94384} break;
-			case ("mph"): {umrechnermultiplyer = 2.23694} break;
+			case ("m/s"): {this.umrechnermultiplyer = 1} break;
+			case ("c"): {this.umrechnermultiplyer = 1 / 299792458} break;
+			case ("km/h"): {this.umrechnermultiplyer = 3.6} break;
+			case ("kn"): {this.umrechnermultiplyer = 1.94384} break;
+			case ("mph"): {this.umrechnermultiplyer = 2.23694} break;
 
-			case ("Lj"): {umrechnermultiplyer = 1 / 9460730472580800}break;
-			case ("Ae"): {umrechnermultiplyer = 1 / 149597870700}break;
-			case ("mi"): {umrechnermultiplyer = 0.000621371}break;
-			case ("inch"): {umrechnermultiplyer = 39.3701}break;
-			case ("km"): {umrechnermultiplyer = 0.001}break;
-			case ("m"): {umrechnermultiplyer = 1}break;
-			case ("dm"): {umrechnermultiplyer = 10}break;
-			case ("cm"): {umrechnermultiplyer = 100}break;
-			case ("mm"): {umrechnermultiplyer = 1000}break;
+			case ("Lj"): {this.umrechnermultiplyer = 1 / 9460730472580800}break;
+			case ("Ae"): {this.umrechnermultiplyer = 1 / 149597870700}break;
+			case ("mi"): {this.umrechnermultiplyer = 0.000621371}break;
+			case ("inch"): {this.umrechnermultiplyer = 39.3701}break;
+			case ("km"): {this.umrechnermultiplyer = 0.001}break;
+			case ("m"): {this.umrechnermultiplyer = 1}break;
+			case ("dm"): {this.umrechnermultiplyer = 10}break;
+			case ("cm"): {this.umrechnermultiplyer = 100}break;
+			case ("mm"): {this.umrechnermultiplyer = 1000}break;
 
-			case ("kg"): {umrechnermultiplyer = 1}break;
-			case ("g"): {umrechnermultiplyer = 1000}break;
-			case ("t"): {umrechnermultiplyer = 0.001}break;
-			case ("ztr"): {umrechnermultiplyer = 0.02}break;
-			case ("oz"): {umrechnermultiplyer = 35.274}break;
-			case ("lb"): {umrechnermultiplyer = 2.20462}break;
-			case ("EM"): {umrechnermultiplyer = 1 / (5.9722 * Math.pow(10,24))}break;
-			case ("SM"): {umrechnermultiplyer = 1 / (1.9891 * Math.pow(10,30))}break;
-			case ("AM"): {umrechnermultiplyer = 6.02214 * Math.pow(10,26)}break;
+			case ("kg"): {this.umrechnermultiplyer = 1}break;
+			case ("g"): {this.umrechnermultiplyer = 1000}break;
+			case ("t"): {this.umrechnermultiplyer = 0.001}break;
+			case ("ztr"): {this.umrechnermultiplyer = 0.02}break;
+			case ("oz"): {this.umrechnermultiplyer = 35.274}break;
+			case ("lb"): {this.umrechnermultiplyer = 2.20462}break;
+			case ("EM"): {this.umrechnermultiplyer = 1 / (5.9722 * Math.pow(10,24))}break;
+			case ("SM"): {this.umrechnermultiplyer = 1 / (1.9891 * Math.pow(10,30))}break;
+			case ("AM"):  {this.umrechnermultiplyer = 6.02214 * Math.pow(10,26)}break;
 		}
-		
+		this.Berechnung();
+	}
+	
+	Berechnung = () => {
+		let ergebnis = 0;
 		this.setState({ausagbe: true})
-		if (x != "null") {
-			if (this.eingabeamount != null) {
-				if (this.eingabeamount != 0) {
-					if (this.eingabemultiplyer != "null") {
-						ergebnis = this.eingabeamount / this.eingabemultiplyer * umrechnermultiplyer;
-						ergebnis = Math.round(ergebnis * 100000000000000000)/100000000000000000;
-						console.log(ergebnis + " = " + this.eingabeamount + " / " + this.eingabemultiplyer + " * " + umrechnermultiplyer);
-						this.setState({ausgabe: true, ergebnis: ergebnis + "" + x})
-					}
-				}
-			}
+		if (this.eingabeindicator && this.groseindicator && this.umrechnerindicator) {
+			ergebnis = this.eingabeamount / this.eingabemultiplyer * this.umrechnermultiplyer;
+			ergebnis = Math.round(ergebnis * 100000000000000000)/100000000000000000;
+			console.log(ergebnis + " = " + this.eingabeamount + " / " + this.eingabemultiplyer + " * " + this.umrechnermultiplyer);
+			this.setState({ausgabe: true, ergebnis: ergebnis + "" + this.eingabeumrechnen})
+		} else {
+			this.setState({ausgabe: false, ergebnis: ""})
+			console.log(this.eingabeindicator + this.groseindicator + this.umrechnerindicator)
+			console.log("false")
 		}
-		else {this.setState({ausgabe: false, ergebnis: ""})}
-		console.log(ergebnis + " = " + this.eingabeamount + " / " + this.eingabemultiplyer + " * " + umrechnermultiplyer);
 	}
 
 	render() {
