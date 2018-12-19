@@ -1,7 +1,7 @@
 import React from 'react';
-import {Platform, StatusBar, StyleSheet, View, Text, ActivityIndicator, Button, TextInput, Picker, ScrollView} from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, Text, ActivityIndicator, Button, TextInput, Picker, ScrollView } from 'react-native';
 import styles from '../../styles';
-import {Header, Left, Right, Body, Title, Container, Icon} from 'native-base';
+import { Header, Left, Right, Body, Title, Container, Icon } from 'native-base';
 
 export default class Zinsber extends React.Component {
 	state = {
@@ -187,7 +187,7 @@ export default class Zinsber extends React.Component {
 				<Header style={styles.header}>
 					<Left style={styles.headerContents}>
 						<Icon name="menu" onPress={() => this.props.navigation.openDrawer()}
-							  style={styles.icon}/>
+							style={styles.icon} />
 					</Left>
 					<Body style={styles.headerContents}>
 						<Text style={styles.headerText}>Zinsrechner</Text>
@@ -197,55 +197,55 @@ export default class Zinsber extends React.Component {
 					<View style={[styles.inputContainer, styles.zinsContainer]}>
 						<Text style={styles.inputText}>Startkapital (€):</Text>
 						<TextInput onChangeText={this.Startkapital} value={this.state.startkapital} style={styles.inputText}
-								placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+							placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
 						<Text style={styles.inputText}>Zinssatz (%):</Text>
 						<TextInput onChangeText={this.Zinssatz} value={this.state.zins} style={styles.inputText}
-								placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+							placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
 						<Text style={styles.inputText}>Laufzeit:</Text>
 						<Picker
 							selectedValue={this.state.intervallzeit}
 							style={[styles.inputPicker]}
-							onValueChange={(itemValue,) => this.setState({intervallzeit: itemValue})}>
-							<Picker.Item label="Auswählen" value="keine" style={styles.inputText}/>
-							<Picker.Item label="in Monaten" value="monate" style={styles.inputText}/>
-							<Picker.Item label="in Jahren" value="jahre" style={styles.inputText}/>
+							onValueChange={(itemValue, ) => this.setState({ intervallzeit: itemValue })}>
+							<Picker.Item label="Auswählen" value="keine" style={styles.inputText} />
+							<Picker.Item label="in Monaten" value="monate" style={styles.inputText} />
+							<Picker.Item label="in Jahren" value="jahre" style={styles.inputText} />
 						</Picker>
 						<TextInput onChangeText={this.Zeit} value={this.state.zeit} style={styles.inputText}
-								placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+							placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
 						<Text style={styles.inputText}>Einzahlung: (€)</Text>
 						<Picker
 							selectedValue={this.state.intervalleinzahlung}
 							style={[styles.inputPicker]}
-							onValueChange={(itemValue,) => this.setState({intervalleinzahlung: itemValue})}>
-							<Picker.Item label="Keine" value="keine" style={styles.inputText}/>
-							<Picker.Item label="monatlich" value="monatlich" style={styles.inputText}/>
-							<Picker.Item label="jährlich" value="jährlich" style={styles.inputText}/>
+							onValueChange={(itemValue, ) => this.setState({ intervalleinzahlung: itemValue })}>
+							<Picker.Item label="Keine" value="keine" style={styles.inputText} />
+							<Picker.Item label="monatlich" value="monatlich" style={styles.inputText} />
+							<Picker.Item label="jährlich" value="jährlich" style={styles.inputText} />
 						</Picker>
 						<Picker
 							selectedValue={this.state.schussig}
 							style={[styles.inputPicker]}
-							onValueChange={(itemValue,) => this.setState({schussig: itemValue})}>
-							<Picker.Item label="vorschüssig" value="vor" style={styles.inputText}/>
-							<Picker.Item label="nachschüssig" value="nach" style={styles.inputText}/>
+							onValueChange={(itemValue, ) => this.setState({ schussig: itemValue })}>
+							<Picker.Item label="vorschüssig" value="vor" style={styles.inputText} />
+							<Picker.Item label="nachschüssig" value="nach" style={styles.inputText} />
 						</Picker>
 						<TextInput onChangeText={this.Einzahlung} value={this.state.einzahlung} style={styles.inputText}
-								placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
+							placeholder="Bitte eingeben!" placeholderTextColor="#4A4A4A"></TextInput>
 					</View>
 					<View style={styles.outputContainer}>
-						<Button onPress={this.berechnenGewinn} title="Zins berechnen"/>
+						<Button onPress={this.berechnenGewinn} title="Zins berechnen" />
 					</View>
 					<View style={styles.outputContainer}>
 						{this.state.ausgabeindicator ? <View
-							style={[styles.outputContainer, {backgroundColor: this.state.ausgabecolor}, styles.notification]}>
+							style={[styles.outputContainer, { backgroundColor: this.state.ausgabecolor }, styles.notification]}>
 							<Text style={styles.outputText}>{this.state.ausgabetext}</Text>
 						</View> : null}
 						{this.state.ergebnisindicator ?
-							<View style={[styles.outputContainer, {backgroundColor: '#CCC'}, styles.notification]}>
+							<View style={[styles.outputContainer, { backgroundColor: '#CCC' }, styles.notification]}>
 								<Text style={styles.outputText}>{this.state.gewinn}</Text>
 								<Text style={styles.outputText}>{this.state.endkapital}</Text>
 							</View> : null}
 						<View style={styles.outputContainer}>
-							<Button onPress={this.Loschen} title="Reset"/>
+							<Button onPress={this.Loschen} title="Reset" />
 						</View>
 					</View>
 				</ScrollView>
