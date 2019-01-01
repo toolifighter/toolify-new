@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StatusBar, StyleSheet, View, Text, ActivityIndicator, Button, TextInput, Picker, ScrollView} from 'react-native';
+import {View, Text, Modal, Button, TextInput, Picker, ScrollView} from 'react-native';
 import styles from '../../styles';
 import {Header, Left, Right, Body, Title, Container, Icon} from 'native-base';
 
@@ -12,7 +12,8 @@ export default class Numbers extends React.Component {
         ausgabetext: "",
         fehler: false,
         fehlertext: "",
-    }
+		isExecuted: false,
+    };
 
     listelements = [];
 
@@ -78,23 +79,43 @@ export default class Numbers extends React.Component {
                     console.log("part: " + textpart);
                     console.log("ganzes: " + text)
                 }
-                console.log("end")
-                alert(
-                    text,
-                    [
-                        {text: 'neu generieren', onPress: () => this.Ausfuhren()},
-                        {text: 'Reset', onPress: () => this.Loschen()},
-                        {text: 'Schließen', onPress: () => console.log('close')},
-                    ],
-                    //geht irgendwie nicht so richtig
-                    {cancelable: true}
-                )
+                console.log("end");
+                this.setState({isExecuted: true});
+                // alert(
+                //     text,
+                //     [
+                //         {text: 'neu generieren', onPress: () => this.Ausfuhren()},
+                //         {text: 'Reset', onPress: () => this.Loschen()},
+                //         {text: 'Schließen', onPress: () => console.log('close')},
+                //     ],
+                //     //geht irgendwie nicht so richtig
+                //     {cancelable: true}
+                // )
             }
         }
     }
     render() {
 		return (
 			<View style={styles.container}>
+				{this.state.isExecuted ?
+					<Modal
+						animationType="slide"
+						transparent={false}
+						visible={this.state.modalVisible}
+						onRequestClose={() => {
+							Alert.alert('Modal has been closed.');
+						}}>
+						<View style={{marginTop: 22}}>
+							<View>
+								<Text>Hello World!</Text>
+
+
+
+							</View>
+						</View>
+					</Modal> : null
+				}
+
 				<Header style={styles.header}>
 					<Left style={styles.headerContents}>
 						<Icon name="menu" onPress={() => this.props.navigation.openDrawer()}
