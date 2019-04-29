@@ -105,8 +105,7 @@ export default class BMI extends React.Component {
 	};
 
 	render() {
-		return <ScrollView>
-			<View style={styles.container}>
+		return	<View style={styles.container}>
 				<Header style={styles.header}>
 					<Left style={styles.headerContents}>
 						<Icon name="menu" onPress={() => this.props.navigation.openDrawer()}
@@ -116,6 +115,7 @@ export default class BMI extends React.Component {
 					<Text style={styles.headerText}>Körper</Text>
 					</Body>
 				</Header>
+				<ScrollView>
 				<View style={[styles.inputContainer, styles.bmiContainer]}>
 					<Text style={styles.inputText}>Größe (cm):</Text>
 					<TextInput onChangeText={this.eingabeGroesse} value={this.state.groesse} style={styles.inputText}
@@ -142,8 +142,7 @@ export default class BMI extends React.Component {
 				<View style={styles.outputContainer}>
 					<Button onPress={this.Loschen} title="Reset"/>
 				</View>
+				</ScrollView>
 			</View>
-		</ScrollView>;
-
 	}
 }

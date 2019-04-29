@@ -1,7 +1,7 @@
 import React from "react";
-import {Button, Picker, ScrollView, Text, TextInput, View} from "react-native";
+import { Button, Picker, ScrollView, Text, TextInput, View } from "react-native";
 import styles from "../../styles";
-import {Body, Header, Icon, Left} from "native-base";
+import { Body, Header, Icon, Left } from "native-base";
 
 export default class BodyFat extends React.Component {
 
@@ -137,7 +137,7 @@ export default class BodyFat extends React.Component {
 		console.log("US: " + bodyFatUSNavy + ", Y: " + bodyFatYMCA + ", insg: " + bodyFat);
 		console.log(this.state);
 
-		this.setState({isExecuted: true});
+		this.setState({ isExecuted: true });
 	}
 
 	errorHandler = (errorType) => {
@@ -205,26 +205,26 @@ export default class BodyFat extends React.Component {
 
 
 	render() {
-		return (<ScrollView>
-				<View style={styles.container}>
-					<Header style={styles.header}>
-						<Left style={styles.headerContents}>
-							<Icon
-								name="menu"
-								onPress={() => this.props.navigation.openDrawer()}
-								style={styles.icon}
-							/>
-						</Left>
-						<Body style={styles.headerContentsIconLeft}>
+		return 	<View style={styles.container}>
+				<Header style={styles.header}>
+					<Left style={styles.headerContents}>
+						<Icon
+							name="menu"
+							onPress={() => this.props.navigation.openDrawer()}
+							style={styles.icon}
+						/>
+					</Left>
+					<Body style={styles.headerContentsIconLeft}>
 						<Text style={styles.headerText}>Körper</Text>
-						</Body>
-					</Header>
+					</Body>
+				</Header>
+				<ScrollView>
 					<View style={styles.inputContainer}>
 						<Text style={styles.inputText}>Geschlecht:</Text>
 						<Picker
 							selectedValue={this.state.sex}
 							style={[styles.inputPicker]}
-							onValueChange={itemValue => this.setState({sex: itemValue})}
+							onValueChange={itemValue => this.setState({ sex: itemValue })}
 						>
 							<Picker.Item
 								label="Auswählen"
@@ -246,7 +246,7 @@ export default class BodyFat extends React.Component {
 						<Picker
 							selectedValue={this.state.bodyFatSelectedRegion}
 							style={[styles.inputPicker]}
-							onValueChange={itemValue => this.setState({bodyFatSelectedRegion: itemValue})}
+							onValueChange={itemValue => this.setState({ bodyFatSelectedRegion: itemValue })}
 						>
 							<Picker.Item
 								label="Auswählen"
@@ -271,7 +271,7 @@ export default class BodyFat extends React.Component {
 						</Picker>
 						<Text style={styles.inputText}>Größe (cm):</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({height: textValue})}
+							onChangeText={textValue => this.setState({ height: textValue })}
 							value={this.state.height}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -279,7 +279,7 @@ export default class BodyFat extends React.Component {
 						/>
 						<Text style={styles.inputText}>Gewicht (kg):</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({weight: textValue})}
+							onChangeText={textValue => this.setState({ weight: textValue })}
 							value={this.state.weight}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -287,7 +287,7 @@ export default class BodyFat extends React.Component {
 						/>
 						<Text style={styles.inputText}>Alter:</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({age: textValue})}
+							onChangeText={textValue => this.setState({ age: textValue })}
 							value={this.state.age}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -295,7 +295,7 @@ export default class BodyFat extends React.Component {
 						/>
 						<Text style={styles.inputText}>Hüftumfang:</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({waist: textValue})}
+							onChangeText={textValue => this.setState({ waist: textValue })}
 							value={this.state.waist}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -303,7 +303,7 @@ export default class BodyFat extends React.Component {
 						/>
 						<Text style={styles.inputText}>Nackenumfang:</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({neck: textValue})}
+							onChangeText={textValue => this.setState({ neck: textValue })}
 							value={this.state.neck}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -311,7 +311,7 @@ export default class BodyFat extends React.Component {
 						/>
 						<Text style={styles.inputText}>Bauchumfang:</Text>
 						<TextInput
-							onChangeText={textValue => this.setState({tommy: textValue})}
+							onChangeText={textValue => this.setState({ tommy: textValue })}
 							value={this.state.tommy}
 							style={styles.inputText}
 							placeholder="Bitte eingeben!"
@@ -319,8 +319,8 @@ export default class BodyFat extends React.Component {
 						/>
 					</View>
 					{/* <View style={styles.outputContainer}>
-          <Button onPress={this.autoFill} title="Automatisch ausfüllen" />
-        </View> */}
+          				<Button onPress={this.autoFill} title="Automatisch ausfüllen" />
+        			</View> */}
 					<View style={styles.outputContainer}>
 						<Button
 							onPress={this.calcBodyFat}
@@ -328,14 +328,16 @@ export default class BodyFat extends React.Component {
 						/>
 					</View>
 					{this.state.isExecuted ? (<View
-							style={[styles.outputContainer, {backgroundColor: this.state.bgColorNotification}, styles.notification]}
-						>
-							<Text style={styles.outputText}>{this.state.notification}</Text>
-						</View>) : null}
+						style={[styles.outputContainer, { backgroundColor: this.state.bgColorNotification }, styles.notification]}
+					>
+						<Text style={styles.outputText}>{this.state.notification}</Text>
+					</View>) : null}
 					<View style={styles.outputContainer}>
-						<Button onPress={this.reset} title="Reset"/>
+						<Button onPress={this.reset} title="Reset" />
 					</View>
-				</View>
-			</ScrollView>);
+
+
+				</ScrollView>
+			</View>
 	}
 }
